@@ -8,6 +8,7 @@ class NbaNewsProject::Category
     end
 
     def self.all
+        @categories = NbaNewsProject::Category.all if @@all.empty?
         @@all
     end
 

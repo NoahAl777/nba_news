@@ -5,7 +5,7 @@ require_relative "nba_news_project/scraper"
 
 require 'pry'
 require 'nokogiri'
-
+require 'open-uri'
 module NbaNewsProject
   class Error < StandardError; end
   # Your code goes here...
