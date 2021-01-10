@@ -10,13 +10,15 @@ class NbaNewsProject::CLI
 
     def get_advertised_categories
         #to be scraped instead
-        @categories = ['Signing Rumor','Official Signing','Trade Rumor','Official Trade','Misc Rumor','Misc Official Transaction','Rankings','Suspension','Injury','NBA Draft','Teams','Expansion','CBA','Waiver','All-Star','Award','Fines','B-Ball IQ','Summer League','Preseason','Playoffs']
+        NbaNewsProject::Category.new("signing rumors")
+        NbaNewsProject::Category.new("official signing")
+        @categories = NbaNewsProject::Category.all
     end
 
     def list_category
         puts "Choose a category to see the latest news!"
         @categories.each.with_index(1) do |category, index| 
-        puts "#{index}. #{category}"
+        puts "#{index}. #{category.name}"
         end
     end
 
@@ -31,7 +33,6 @@ class NbaNewsProject::CLI
 
     def show_events_for(chosen_category)
         category = @categories[chosen_category - 1]
-        puts "Here are the latest news for #{category}"
-        binding.pry
+        puts "Here are the latest news for #{category.name}"
     end
 end
