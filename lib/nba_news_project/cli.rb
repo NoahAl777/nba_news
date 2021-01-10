@@ -10,7 +10,7 @@ class NbaNewsProject::CLI
 
     def get_advertised_categories
         #to be scraped instead
-        @categories = ['  -  -  Signing Rumor','  -  -  Official Signing','  -  -  Trade Rumor','  -  -  Official Trade','  -  -  Misc Rumor','  -  -  Misc Official Transaction','  -  -  Rankings','  -  -  Suspension','  -  -  Injury','  -  -  NBA Draft','  -  -  Teams','  -  -  Expansion','  -  -  CBA','  -  -  Waiver','  -  -  All-Star','  -  -  Award','  -  -  Fines','  -  -  B-Ball IQ','  -  -  Summer League','  -  -  Preseason','  -  -  Playoffs']
+        @categories = ['Signing Rumor','Official Signing','Trade Rumor','Official Trade','Misc Rumor','Misc Official Transaction','Rankings','Suspension','Injury','NBA Draft','Teams','Expansion','CBA','Waiver','All-Star','Award','Fines','B-Ball IQ','Summer League','Preseason','Playoffs']
     end
 
     def list_category
@@ -21,13 +21,17 @@ class NbaNewsProject::CLI
     end
 
     def get_user_category
-        chosen_category = gets.strip
-        binding.pry
-        # if valid_input(chosen_category.to_i, @categories)
-        # end
+        chosen_category = gets.strip.to_i
+        show_events_for(chosen_category) #if valid_input(chosen_category, @categories)
     end
 
-    def valid_input(input, data) #makes sure user input is valid
-        input.to_i <= @data.length && input.to_i > 0
+    #def valid_input(input, data) #makes sure user input is valid
+     #   input.to_i <= @data.length && input.to_i > 0
+    #end
+
+    def show_events_for(chosen_category)
+        category = @categories[chosen_category - 1]
+        puts "Here are the latest news for #{category}"
+        binding.pry
     end
 end
