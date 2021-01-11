@@ -1,5 +1,7 @@
 class NbaNewsProject::CLI
-    attr_accessor :chosen_category
+    require 'nokogiri'
+    require 'open-uri'
+    attr_accessor :chosen_category, :events
     def call
         puts "\nWelcome to NBA News\n"
         get_advertised_categories
@@ -46,8 +48,8 @@ class NbaNewsProject::CLI
 
     def get_user_category
         puts "Select a category by number"
-        chosen_category = gets.strip.to_i
-        show_events_for(chosen_category) #if valid_input(chosen_category, @categories)
+        @chosen_category = gets.strip.to_i
+        show_events_for(@chosen_category) #if valid_input(chosen_category, @categories)
     end
 
     #def valid_input(input, data) #makes sure user input is valid
@@ -56,6 +58,8 @@ class NbaNewsProject::CLI
 
     def show_events_for(chosen_category)
         category = @categories[chosen_category]
+        #event = category.events
         puts "Here are the latest news for #{category}"
+            binding.pry
     end
 end
