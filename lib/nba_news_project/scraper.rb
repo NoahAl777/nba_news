@@ -1,5 +1,4 @@
 class NbaNewsProject::Scraper
-    attr_accessor :categories, :events
 
     def scrape_categories
         doc = Nokogiri::HTML(open("https://basketball.realgm.com/nba/news"))
@@ -7,7 +6,8 @@ class NbaNewsProject::Scraper
         categories = doc.css("select.ddl option")
 
         categories.each do |c|
-            name = c.text
+            name = c.text.gsub("  -  ","").gsub("-  ","")
+            
             NbaNewsProject::Category.new(name)
         end
     end
@@ -15,13 +15,14 @@ class NbaNewsProject::Scraper
     def scrape_events(number, category)
         x = 16 + number
         #binding.pry
-        doc = Nokogiri::HTML(open("https://basketball.realgm.com/news/wiretap/tags/#{x}/NBA_#{category.tr(' ','-')}"))
+        doc = Nokogiri::HTML(open("https://basketball.realgm.com/news/wiretap/tags/#{x}/NBA_#{category.name.tr(' ','-')}"))
         
         events = doc.css("a.article-title")
 
         events.each do |e|
             title = e.text
-            NbaNewsProject::Category.new(title)
+            #binding.pry
+            category.events << title
         end
     end
 
