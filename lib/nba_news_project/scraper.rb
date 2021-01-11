@@ -12,11 +12,12 @@ class NbaNewsProject::Scraper
         end
     end
 
-    def self.scrape_events(number, category)
-        number = 13 + chosen_category
-        doc = Nokogiri::HTML(open("https://basketball.realgm.com/news/wiretap/tags/#{number}/NBA_#{category.tr(' ','-')}"))
+    def scrape_events(number, category)
+        x = 16 + number
+        #binding.pry
+        doc = Nokogiri::HTML(open("https://basketball.realgm.com/news/wiretap/tags/#{x}/NBA_#{category.tr(' ','-')}"))
         
-        events = doc.css(a.article-title)
+        events = doc.css("a.article-title")
 
         events.each do |e|
             title = e.text

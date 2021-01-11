@@ -2,7 +2,7 @@ require_relative "./nba_news_project/version"
 require_relative "nba_news_project/cli"
 require_relative "nba_news_project/category"
 require_relative "nba_news_project/scraper"
-require_relative "nba_news_project/events"
+
 
 require 'pry'
 require 'nokogiri'
