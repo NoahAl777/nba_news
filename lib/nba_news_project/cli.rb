@@ -68,12 +68,8 @@ class NbaNewsProject::CLI
         x = NbaNewsProject::Scraper.new.scrape_events(chosen_category, category)
         x.each_with_index do |event, index|
             puts event.children.text
-            
-        end
-    end
-
-        def space
             puts "-----------------"
         end
+    end
 end
 
