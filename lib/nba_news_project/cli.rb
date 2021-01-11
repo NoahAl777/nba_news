@@ -4,9 +4,6 @@ class NbaNewsProject::CLI
         puts "\nWelcome to NBA News\n"
         list_category
         categories_and_events
-        #get_user_category
-        # get_events_for(category)
-        # list_events
     end
 
     def list_category
@@ -42,9 +39,7 @@ def categories_and_events
             return get_user_category
         end
     end
-    #Create a way to avoid re scraping for info already obtained
-    #save events inside of categories
-    #Setup object attributes
+
     def show_events_for(chosen_category)
         category = @categories[@chosen_category]        
         puts "Here are the latest news for #{category.name}"
@@ -71,13 +66,6 @@ def categories_and_events
     end
     get_user_category
     more
-    # case response
-    # when response == "y"
-    #     puts "more categories"
-    #     get_user_category
-    # when response == "n"
-    #     puts "Thank you for exploring NBA News!"
-    # end
 end
 end
 
