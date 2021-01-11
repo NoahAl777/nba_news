@@ -56,6 +56,7 @@ def categories_and_events
         response = gets.to_s.strip
         if response == "y"
             puts "What category would you like to see?"
+            list_category
             categories_and_events
         elsif response == "n"
             puts "Thank you for exploring NBA News!"
